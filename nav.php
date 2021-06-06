@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="Typographies/beaufortforlol-bold.otf, Typographies/beaufortforlol-regular.otf, Typographies/beaufortforlol-light.otf " rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="config/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/weaksidefav.ico" />
     <title>Weakside</title>
@@ -15,7 +15,7 @@
 
     <?php
 
-    include 'statut.php';
+    include 'config/statut.php';
 
     include '../settings.php';
 
