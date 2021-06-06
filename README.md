@@ -21,7 +21,7 @@ Weakside a pour objet d'apporter une aide aux joueurs de top lane sur LoL, afin 
 
 ![screenshot_affichage2](screenAffichage2.jpg)
 
-![screenshot_reverse](screenReverse.jpg)
+![screenshot_reverse](ScreenReverse.jpg)
 
 ## Database
 
