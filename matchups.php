@@ -16,24 +16,24 @@
       <div class="row justify-content-center">
         <?php
 
-        $querynames = $bdd->query('SELECT p.* FROM personnages p
+        $rqt = $bdd->query('SELECT p.* FROM personnages p
         WHERE p.id IN ("Akali", "Camille", "Fiora", "Irelia", "Quinn", "Riven");');
 
-        while ($names = $querynames->fetch()) {
+        while ($perso = $rqt->fetch()) {
 
         ?>
-          <div class="px-2 py-2 <?php if ($names['state'] == 1) {
+          <div class="px-2 py-2 <?php if ($perso['state'] == 1) {
                                   echo 'scale';
                                 } else {
                                   echo 'indispo';
                                 } ?>">
             <?php
-            if ($names['state'] == 1) {
-              echo "<a href='" . $urladv2 . $names['id'] . "'>
-              <div class='position-relative'><div class='filter position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $names['id'] . ".png' class='card-img' alt=''></div>
+            if ($perso['state'] == 1) {
+              echo "<a href='" . $urladv2 . $perso['id'] . "'>
+              <div class='position-relative'><div class='filter position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $perso['id'] . ".png' class='card-img' alt=''></div>
               </a>";
             } else {
-              echo "<div class='position-relative'><div class='position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $names['id'] . ".png' class='card-img' alt=''></div>";
+              echo "<div class='position-relative'><div class='position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $perso['id'] . ".png' class='card-img' alt=''></div>";
             }
             ?>
           </div>
@@ -46,7 +46,7 @@
   </section>
 
   <?php
-  $querynames->closeCursor();
+  $rqt->closeCursor();
 
   include 'footer.php';
   ?>

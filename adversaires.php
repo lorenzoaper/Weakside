@@ -46,34 +46,40 @@ include 'nav.php';
       $rqt = 'SELECT name, id FROM personnages';
 
       if (isset($_GET['M'])) {
-        $rqt .= ' where id not like "' . $_GET['M'] . '"';
+        $rqt .= ' where id not like :id ';
       }
 
       $rqt .= ' order by name';
 
-      $querynames = $bdd->query($rqt);
+      $statement = $bdd->prepare($rqt);
 
-      while ($names = $querynames->fetch()) {
+      if (isset($_GET['M'])) {
+        $statement->bindvalue(':id', $_GET['M']);
+      }
+
+      $statement->execute();
+
+      while ($perso = $statement->fetch()) {
         if ($detect->isMobile()) {
       ?>
-          <div class="row advsearch align-items-center advmobile" data-nom="<?= $names['name']; ?>" id="<?= $names['id'] ?>"">
-            <img src=" http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/<?= $names['id']; ?>_0.jpg" width="200" alt="">
+          <div class="row advsearch align-items-center advmobile" data-nom="<?= $perso['name']; ?>" id="<?= $perso['id'] ?>"">
+            <img src=" http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/<?= $perso['id']; ?>_0.jpg" width="200" alt="">
             <div class="d-flex justify-content-center advmobilename">
-              <h2 class="color-txt"><?= $names['name']; ?></h2>
+              <h2 class="color-txt"><?= $perso['name']; ?></h2>
             </div>
           </div>
         <?php
         } else {
         ?>
-          <div class="px-2 py-2 scale advsearch" data-nom="<?= $names['name']; ?>" id="<?= $names['id'] ?>">
+          <div class="px-2 py-2 scale advsearch" data-nom="<?= $perso['name']; ?>" id="<?= $perso['id'] ?>">
             <?php
             if (isset($_GET['M'])) {
-              echo "<a href='" . $urlaff2 . $_GET['M'] . "&E=" . $names['id'] . "'>
-              <div class='position-relative'> <div class='filter position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $names['id'] . ".png' class='card-img' alt=''>
+              echo "<a href='" . $urlaff2 . $_GET['M'] . "&E=" . $perso['id'] . "'>
+              <div class='position-relative'> <div class='filter position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $perso['id'] . ".png' class='card-img' alt=''>
               </div></a>";
             } else {
-              echo "<a href='" . $urlreverse . $names['id'] . "'>
-                <div class='position-relative'><div class='filter position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $names['id'] . ".png' class='card-img' alt=''></div>
+              echo "<a href='" . $urlreverse . $perso['id'] . "'>
+                <div class='position-relative'><div class='filter position-absolute'></div><img src='http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/" . $perso['id'] . ".png' class='card-img' alt=''></div>
                 </a>";
             }
 
@@ -119,7 +125,7 @@ include 'nav.php';
 </script>
 
 <?php
-$querynames->closeCursor();
+$statement->closeCursor();
 ?>
 
 <?php

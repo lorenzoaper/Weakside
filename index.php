@@ -6,7 +6,6 @@
   ?>
 
  <header class="container-fluid" id="header">
-   <!--<img src="img/bg/header2.jpg" alt="">-->
    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
      <ol class="carousel-indicators">
        <?php

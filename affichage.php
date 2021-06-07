@@ -2,17 +2,18 @@
 <?php
 include 'nav.php';
 
-$reponse = $bdd->query('SELECT os.*, p.*, p2.id as my_character_id, p2.name as my_character_name, p2.cooldown as my_cooldown, couleur FROM other_stuff os 
-                            INNER JOIN personnages p ON p.id = os.id_character 
-                            INNER JOIN personnages p2 ON p2.id = os.id_my_character 
-                            INNER JOIN difficulty_index di ON di.id = os.difficulty
-                            WHERE os.id_my_character = \'' . $_GET['M'] . '\' AND os.id_character = \'' . $_GET['E'] . '\';');
-$donnees = $reponse->fetch()
-?>
+$rqt = 'SELECT os.*, p.*, p2.id as my_character_id, p2.name as my_character_name, p2.cooldown as my_cooldown, couleur FROM other_stuff os 
+INNER JOIN personnages p ON p.id = os.id_character 
+INNER JOIN personnages p2 ON p2.id = os.id_my_character 
+INNER JOIN difficulty_index di ON di.id = os.difficulty
+WHERE os.id_my_character = :myId AND os.id_character = :otherId';
+
+$statement = $bdd->prepare($rqt);
+$statement->execute(array(":myId" => $_GET['M'], ":otherId" => $_GET['E']));
+$donnees = $statement->fetch();
 ?>
 
 <div class="container">
-    <!--<p class=" text-center soustitre">Voici quelques astuces afin de vous aider à gagner votre lane contre <?= $donnees['name'] ?>.</p>-->
     <div class="row">
         <!-- Card champion joué -->
         <div class="col-4 mt-10">
@@ -114,7 +115,7 @@ $donnees = $reponse->fetch()
 </div>
 
 <?php
-$reponse->closeCursor();
+$statement->closeCursor();
 ?>
 
 <?php
