@@ -2,7 +2,7 @@
 
 ## Description
 
-Weakside est un projet personnel que j'ai initié en parallèle de ma formation de développeur web full-stack, afin d'approfondir mes connaissances en back-end, l'objectif étant de mettre en place une base de données MySQL et de créer un site web dynamique en PHP pour l'exploiter. J'ai été rejoint par Laperoh (https://github.com/lorenzoaper) (issu de la même formation), qui s'est principalement consacré à la partie graphique du site, approfondissant de son côté ses compétences front-end.
+Weakside est un projet personnel initié par Aigash (https://github.com/aigash) en parallèle de la formation de développeur web full-stack, afin d'approfondir nos connaissances en back et front, l'objectif étant de mettre en place une base de données MySQL et de créer un site web dynamique en PHP pour l'exploiter. J'ai rejoint le projet pour principalement me consacré à la partie graphique du site et approfondissant mes compétences front-end.
 Étant tous les deux joueurs de League of Legends, nous avons été d'autant plus motivés à développer le projet au delà de nos attentes initiales. Il nous sert aujourd'hui à la fois de crash test, pour mettre en pratique et nous approprier nos nouvelles compétences, mais également de vitrine pour notre savoir-faire.
 
 ## fonctionnalités
